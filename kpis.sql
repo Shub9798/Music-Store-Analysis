@@ -60,16 +60,16 @@ order by purchase_amount desc;
 
 # Moderate
 
-#1Write query to return the email, first name, last name, & Genre of all Rock Music listeners. Return your list ordered alphabetically by email starting with A
+/*Write query to return the email, first name, last name, & Genre of all Rock Music listeners. Return your list ordered alphabetically by email starting with A*/
 select distinct c.email,c.first_name,c.last_name,g.name from customer c inner join invoice i using(customer_id) 
 inner join invoice_line il using(invoice_id) 
 inner join track t using (track_id) inner join genre g using(genre_id)
-where g.name = "Rock" and c.email like "a%"
+where g.name = "Rock" 
 order by c.email;
 
 
 
-#2. Let's invite the artists who have written the most rock music in our dataset. Write a query that returns the Artist name and total track count of the top 10 rock bands
+/* Let's invite the artists who have written the most rock music in our dataset. Write a query that returns the Artist name and total track count of the top 10 rock bands*/
 select a.name, count(t.track_id) as `total track count` from artist a inner join album al using(artist_id)
 inner join track t using(album_id) inner join genre g using(genre_id)
 where g.name like "Rock"
